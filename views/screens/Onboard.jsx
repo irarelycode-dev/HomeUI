@@ -47,11 +47,11 @@ const Onboard = ({ navigation }) => {
           <Text style={subTitle}>Schedule visits in just a few clicks</Text>
           <Text style={subTitle}>visit in just a few clicks</Text>
         </View>
-        <Pressable onPress={() => navigation.navigate("home")}>
-          <View style={btn}>
+        <View style={btn}>
+          <Pressable onPress={() => navigation.navigate("home")}>
             <Text style={btnText}>Get Started</Text>
-          </View>
-        </Pressable>
+          </Pressable>
+        </View>
       </View>
     </SafeAreaView>
   );
