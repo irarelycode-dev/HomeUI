@@ -4,7 +4,7 @@ import {
   SafeAreaView,
   StyleSheet,
   StatusBar,
-  Button,
+  Image,
   Pressable,
 } from "react-native";
 import React, { useState } from "react";
@@ -16,11 +16,12 @@ const Onboard = ({ navigation }) => {
     image,
     indicatorContainer,
     indicator,
+    indicatorActive,
     info,
     title,
     subTitle,
     infoChild,
-    btn,
+    btnContainer,
     btnText,
   } = styles;
   const [activeIndex, setActiveIndex] = useState(2);
@@ -34,7 +35,7 @@ const Onboard = ({ navigation }) => {
           <View
             style={[indicator, index === activeIndex && indicatorActive]}
             key={index}
-            onTouchEnd={() => setActiveIndex(index)}
+            onTouchStart={() => setActiveIndex(index)}
           />
         ))}
       </View>
@@ -47,9 +48,11 @@ const Onboard = ({ navigation }) => {
           <Text style={subTitle}>Schedule visits in just a few clicks</Text>
           <Text style={subTitle}>visit in just a few clicks</Text>
         </View>
-        <View style={btn}>
+        <View style={btnContainer}>
           <Pressable onPress={() => navigation.navigate("home")}>
-            <Text style={btnText}>Get Started</Text>
+            <View>
+              <Text style={btnText}>Get Started</Text>
+            </View>
           </Pressable>
         </View>
       </View>
@@ -70,10 +73,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   indicator: {
-    height: 20,
-    width: 30,
+    height: 5,
+    width: 40,
     backgroundColor: COLORS.grey,
     marginHorizontal: 5,
+    marginTop: 20,
     borderRadius: 5,
   },
   indicatorActive: {
@@ -94,12 +98,13 @@ const styles = StyleSheet.create({
   infoChild: {
     marginTop: 10,
   },
-  btn: {
-    justifyContent: "center",
-    alignItems: "center",
+  btnContainer: {
     backgroundColor: COLORS.dark,
     borderRadius: 15,
-    marginBottom: 40,
+    marginTop: 50,
+    height: 50,
+    justifyContent: "center",
+    alignItems: "center",
   },
   btnText: {
     color: COLORS.white,
